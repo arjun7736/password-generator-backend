@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import passRouter from "./routes/passRoute"
-
+import cors from "cors"
 
 const URI: string | undefined = process.env.MONGO_URL;
 const PORT: string | undefined = process.env.PORT;
@@ -15,6 +15,13 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(morgan("dev"));
 
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: 'GET,PUT,PATCH,POST,DELETE', 
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+};
+app.use(cors(corsOptions))
 app.use("/api/pass",passRouter)
 
 
