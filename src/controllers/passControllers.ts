@@ -34,3 +34,13 @@ export const getPassword=async(req:Request,res:Response)=>{
         console.log("error")
     }
 }
+
+export const deletePassword=async(req:Request,res:Response)=>{
+    try {
+        const id=req.params.id
+        await PasswordDB.findByIdAndDelete(id)
+        res.json({message:"Password Deleted SuccessFully"})
+    } catch (error) {
+        console.log("error")
+    }
+}

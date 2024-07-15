@@ -1,9 +1,10 @@
 import express from "express"
-import { addPassword, getPassword } from "../controllers/passControllers"
+import { addPassword, deletePassword, getPassword } from "../controllers/passControllers"
 
 const router=express.Router()
 
 router.post("/add-password",addPassword)
 router.get("/get-password",getPassword)
+router.delete("/delete-password/:id",deletePassword)
 
 export default router
