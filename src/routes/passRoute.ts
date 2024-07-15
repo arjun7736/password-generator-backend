@@ -4,7 +4,7 @@ import { addPassword, deletePassword, getPassword } from "../controllers/passCon
 const router=express.Router()
 
 router.post("/add-password",addPassword)
-router.get("/get-password",getPassword)
+router.get("/get-password/:email",getPassword)
 router.delete("/delete-password/:id",deletePassword)
 
 export default router

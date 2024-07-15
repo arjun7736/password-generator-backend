@@ -1,4 +1,5 @@
 export interface IPassword{
     name:string,
-    password:string
+    password:string,
+    user:string
 }

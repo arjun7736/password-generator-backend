@@ -9,6 +9,9 @@ const PassSchema:Schema = new Schema<IPassword>({
     password:{
         type:String,
         required:true
+    },
+    user:{
+        type:String
     }
 })
 

@@ -5,7 +5,10 @@ import PasswordDB from "../models/passModel"
 
 export const addPassword=async(req:Request,res:Response)=>{
     try {
-        const {name,password}=req.body
+        const {name,password,user}=req.body
+        if(!user){
+            throw errorResponse(400,"Please login again",res)
+        }
         if(!name || !password){
             throw errorResponse(400,"Please provide name and password",res)
         }
@@ -16,7 +19,7 @@ export const addPassword=async(req:Request,res:Response)=>{
         if(existingPassword){
             throw errorResponse(402,"This One already exist",res)
         }
-        await PasswordDB.create({name,password})
+        await PasswordDB.create({name,password,user})
         res.json({message:"Password Saved SuccessFully"})
     } catch (error) {
         console.log("error")
@@ -25,10 +28,11 @@ export const addPassword=async(req:Request,res:Response)=>{
 
 export const getPassword=async(req:Request,res:Response)=>{
     try {
-        // if(!email){
-        //     throw errorResponse(400,"Login First",res)
-        // }
-         const passwords = await PasswordDB.find()
+        const email =req.params.email
+        if(!email){
+            throw errorResponse(400,"Login First",res)
+        }
+         const passwords = await PasswordDB.find({user:email})
         res.json(passwords)
     } catch (error) {
         console.log("error")
