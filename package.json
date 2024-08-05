@@ -1,4 +1,3 @@
-
 {
   "name": "backend",
   "version": "1.0.0",
@@ -7,9 +6,8 @@
     "dev": "nodemon src/index.ts",
     "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "postbuild": "npm run print-dir",
-    "print-dir": "ls"
+    "list-files": "ls -l dist",
+    "build": "tsc && npm run list-files"
   },
   "keywords": [],
   "author": "",
