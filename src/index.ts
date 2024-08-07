@@ -16,7 +16,7 @@ app.use(cookieParser());
 app.use(morgan("dev"));
 
 const corsOptions = {
-  origin: 'https://app-secure.vercel.app/',
+  origin: 'https://app-secure.vercel.app',
   methods: 'GET,PUT,PATCH,POST,DELETE', 
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
